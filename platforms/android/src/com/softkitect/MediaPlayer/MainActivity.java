@@ -21,6 +21,8 @@ package com.softkitect.MediaPlayer;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
+import android.webkit.WebSettings;
+import android.webkit.WebSettings.ZoomDensity;
 
 public class MainActivity extends CordovaActivity
 {
@@ -28,6 +30,13 @@ public class MainActivity extends CordovaActivity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        super.loadUrl(config.getStartUrl());
+WebSettings settings = appView.getSettings();
+settings.setBuiltInZoomControls(true);
+settings.setSupportZoom(true);
+settings.setDefaultZooom(ZoomDensity.MEDIUM);
+
 
         // enable Cordova apps to be started in the background
         Bundle extras = getIntent().getExtras();
